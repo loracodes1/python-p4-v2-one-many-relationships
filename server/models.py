@@ -13,14 +13,17 @@ db = SQLAlchemy(metadata=metadata)
 
 
 class Employee(db.Model):
-    __tablename__ = "employees"
+    __tablename__ = 'employees'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     hire_date = db.Column(db.Date)
 
+    # Relationship mapping the employee to related reviews
+    reviews = db.relationship('Review')
+
     def __repr__(self):
-        return f"<Employee {self.id}, {self.name}, {self.hire_date}>"
+        return f'<Employee {self.id}, {self.name}, {self.hire_date}>'
 
 
 class Onboarding(db.Model):
